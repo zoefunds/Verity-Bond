@@ -19,7 +19,7 @@ state transitions release or pay the escrow.
 
 Post-deployment verification retrieved the public schema and called
 `get_ledger`. A real identity-bound E2E pact now leaves the live ledger at one
-pact, one unit in, zero out, and one locked as of 2026-10-28 09:05:01 UTC.
+pact, one unit in, zero out, and one locked as of 2026-10-28 09:11:27 UTC.
 Machine-readable deployment data is in
 [`deployments/studionet.json`](deployments/studionet.json).
 

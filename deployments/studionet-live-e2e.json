@@ -29,11 +29,15 @@
     "total_in": "1",
     "total_out": "0"
   },
-  "verified_at": "2026-10-28T09:05:01Z",
+  "verified_at": "2026-10-28T09:11:27Z",
   "archive_progress": {
     "wayback_save_job": "spn2-f1991b44e65c497763fb3babebf9a1805a19eb76",
     "wayback_requested_at": "2026-10-28T09:06:55Z",
-    "wayback_indexed_at_last_check": false,
+    "wayback_indexed_at_last_check": true,
+    "wayback_capture_timestamp": "20261028090751",
+    "wayback_locator": "https://web.archive.org/web/20261028090751id_/https://veritybond-live-e2e.vercel.app/commitment",
+    "wayback_content_sha256": "a4f65d22be3a7afe699a6e992b06fe5c106ebea4ba7250239aae32b9da168f2e",
+    "wayback_archive_sha1_base32": "TKQKLOIETF4RBAD73IEAKQ5CQO6LV4J5",
     "arquivo_capture_available": false
   },
   "scope": "identity challenge, public HTTPS proof verification, baseline fetch and semantic admission, payable pact creation, and persisted state read-back",

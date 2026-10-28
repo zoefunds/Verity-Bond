@@ -4,7 +4,7 @@
 
 **PASS — real identity, HTTPS verification, baseline admission, and payable
 pact creation executed on Studionet. The resulting 5/5 live state checks passed
-at 2026-10-28 09:05:01 UTC.**
+at 2026-10-28 09:11:27 UTC.**
 
 This report records both real write transactions and subsequent state checks
 against the GenLayer Studionet RPC at `https://studio.genlayer.com/api`. It is
@@ -123,12 +123,19 @@ The conservation invariant holds: `currently_locked = total_in - total_out`.
 
 ## Archive progress
 
-A real Wayback Save Page Now capture was requested at 2026-10-28 09:06:55
-UTC under job `spn2-f1991b44e65c497763fb3babebf9a1805a19eb76`. It was not yet
-visible in the CDX index at the immediate follow-up check. Arquivo.pt's capture
-is also not yet available. The contract correctly refuses an evidence round
-until both independent adapters expose post-creation captures with matching
-metadata and digests.
+A real Wayback Save Page Now capture was requested at 2026-10-28 09:06:55 UTC
+under job `spn2-f1991b44e65c497763fb3babebf9a1805a19eb76`. It is now indexed:
+
+- Timestamp: `20261028090751`
+- Locator: `https://web.archive.org/web/20261028090751id_/https://veritybond-live-e2e.vercel.app/commitment`
+- Decoded content SHA-256: `a4f65d22be3a7afe699a6e992b06fe5c106ebea4ba7250239aae32b9da168f2e`
+- Archive wire SHA-1 in Base32: `TKQKLOIETF4RBAD73IEAKQ5CQO6LV4J5`
+
+The archive digest matches Wayback's CDX metadata, and the content digest
+matches the pact baseline. Arquivo.pt still has no corresponding capture as of
+2026-10-28 09:11:27 UTC. The contract correctly refuses an evidence round until
+both independent adapters expose post-creation captures with matching metadata
+and digests.
 
 ## Reproduce
 

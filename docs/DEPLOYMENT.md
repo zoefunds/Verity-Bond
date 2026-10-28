@@ -17,7 +17,7 @@
 | Consensus result | `MAJORITY_AGREE` |
 | Consensus rounds | 1 |
 | Deployed at | 2026-10-28 08:44:06 UTC |
-| Last live verification | 2026-10-28 09:05:01 UTC |
+| Last live verification | 2026-10-28 09:11:27 UTC |
 
 The address and transaction are also recorded in
 `deployments/studionet.json`.
