@@ -1,0 +1,11 @@
+networks:
+  default: localnet
+  localnet: {}
+  studionet: {}
+
+paths:
+  contracts: contracts
+  artifacts: artifacts
+
+environment: .env
+
