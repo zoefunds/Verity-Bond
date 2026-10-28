@@ -8,6 +8,14 @@ gltest tests/direct -q
 
 Current result: **22 passed** on 2026-10-28.
 
+The live Studionet suite is opt-in and currently passes 4/4 checks:
+
+```sh
+RUN_STUDIONET_E2E=1 python3 -m pytest tests/e2e/test_studionet.py -v
+```
+
+Detailed evidence is recorded in [`E2E_REPORT.md`](E2E_REPORT.md).
+
 ## Coverage
 
 The direct GenLayer VM suite verifies:
@@ -41,5 +49,5 @@ genlayer call 0xe6859D98D3cD2532A76684454fF2edA809cd4834 get_ledger \
 ```
 
 The schema exposed all documented methods. The latest ledger check at
-2026-10-28 08:48:04 UTC was empty and conserved.
+2026-10-28 08:53:48 UTC was empty and conserved.
 

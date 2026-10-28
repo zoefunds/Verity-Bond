@@ -19,7 +19,7 @@ state transitions release or pay the escrow.
 
 Post-deployment verification retrieved the public schema and called
 `get_ledger`. The live ledger returned zero pacts and zero value in, out, or
-locked as of 2026-10-28 08:48:04 UTC. Machine-readable deployment data is in
+locked as of 2026-10-28 08:53:48 UTC. Machine-readable deployment data is in
 [`deployments/studionet.json`](deployments/studionet.json).
 
 ## Repository
@@ -31,6 +31,7 @@ locked as of 2026-10-28 08:48:04 UTC. Machine-readable deployment data is in
 - Deployment and verification: [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - Security properties and assumptions: [`docs/SECURITY.md`](docs/SECURITY.md)
 - Test coverage: [`docs/TESTING.md`](docs/TESTING.md)
+- Live Studionet E2E evidence: [`docs/E2E_REPORT.md`](docs/E2E_REPORT.md)
 
 ## Quick verification
 
@@ -46,6 +47,12 @@ The current direct suite contains 22 tests. It covers deployment, identity
 challenge generation, baseline admission, evidence quorum, replay resistance,
 archive digest validation, review and challenge paths, beneficiary release,
 expiry behavior, and value conservation.
+
+Run the four live, read-only Studionet checks with:
+
+```sh
+RUN_STUDIONET_E2E=1 python3 -m pytest tests/e2e/test_studionet.py -v
+```
 
 ## Identity proof
 

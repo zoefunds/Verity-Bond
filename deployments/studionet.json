@@ -13,8 +13,11 @@
   "consensus_result": "MAJORITY_AGREE",
   "verified": true,
   "verification": {
-    "checked_at": "2026-10-28T08:48:04Z",
+    "checked_at": "2026-10-28T08:53:48Z",
     "schema_read": true,
+    "deployed_source_matches": true,
+    "live_e2e_checks": 4,
+    "live_e2e_passed": 4,
     "ledger": {
       "currently_locked": "0",
       "pacts": "0",
