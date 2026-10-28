@@ -5,31 +5,66 @@ evidence-diverse public commitment assurance. A publisher locks a stake behind
 a public statement, independent web archives supply evidence, and deterministic
 state transitions release or pay the escrow.
 
-## Contract
+## Live deployment
 
-The deployable contract is `contracts/VerityBond.py`. Its publisher identity
-proof is served from `/.well-known/veritybond.json` and is scoped to the caller's
-wallet and domain.
+| Field | Value |
+| --- | --- |
+| Network | GenLayer Studionet |
+| Chain ID | `61999` |
+| Contract | `0xe6859D98D3cD2532A76684454fF2edA809cd4834` |
+| Transaction | `0xf8431603750fc671114065506c0399f6b2727fac6decb6bc04e8b40988b9e4d0` |
+| Deployer | `0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb` |
+| Status | Accepted (`MAJORITY_AGREE`) |
+| Deployed | 2026-10-28 08:44:06 UTC |
 
-## Test
+Post-deployment verification retrieved the public schema and called
+`get_ledger`. The live ledger returned zero pacts and zero value in, out, or
+locked as of 2026-10-28 08:48:04 UTC. Machine-readable deployment data is in
+[`deployments/studionet.json`](deployments/studionet.json).
 
-Run the direct deployment and lifecycle suite with:
+## Repository
+
+- Deployable contract: [`contracts/VerityBond.py`](contracts/VerityBond.py)
+- Direct deployment and lifecycle tests: [`tests/direct`](tests/direct)
+- Architecture and lifecycle: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- Public contract API: [`docs/API.md`](docs/API.md)
+- Deployment and verification: [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
+- Security properties and assumptions: [`docs/SECURITY.md`](docs/SECURITY.md)
+- Test coverage: [`docs/TESTING.md`](docs/TESTING.md)
+
+## Quick verification
+
+Requirements are Python 3, the GenLayer CLI, and `gltest`.
 
 ```sh
 gltest tests/direct -q
+genlayer call 0xe6859D98D3cD2532A76684454fF2edA809cd4834 get_ledger \
+  --rpc https://studio.genlayer.com/api
 ```
 
-The suite covers deployment, identity challenge generation, baseline admission,
-evidence quorum, replay resistance, archive digest validation, review and
-challenge paths, beneficiary release, expiry behavior, and value conservation.
+The current direct suite contains 22 tests. It covers deployment, identity
+challenge generation, baseline admission, evidence quorum, replay resistance,
+archive digest validation, review and challenge paths, beneficiary release,
+expiry behavior, and value conservation.
 
-## Studionet deployment
+## Identity proof
 
-- Contract address: `0xe6859D98D3cD2532A76684454fF2edA809cd4834`
-- Deployment transaction: `0xf8431603750fc671114065506c0399f6b2727fac6decb6bc04e8b40988b9e4d0`
-- Deployer: `0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb`
-- Network: GenLayer Studionet (`61999`)
+Before opening a pact, a publisher calls `begin_identity(domain)` and publishes
+the returned challenge at `https://<domain>/.well-known/veritybond.json`:
 
-The deployment was verified by reading its public schema and calling
-`get_ledger`, which returned an empty, conserved ledger.
+```json
+{
+  "wallet": "0x...",
+  "challenge": "..."
+}
+```
+
+The publisher then calls `verify_identity(domain)`. The proof is wallet- and
+domain-bound and remains valid for 30 days.
+
+## Important
+
+Studionet is a development network. The deployment is not a production security
+or economic guarantee. Review the documented assumptions before using real
+value.
 

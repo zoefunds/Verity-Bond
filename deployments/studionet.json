@@ -2,8 +2,24 @@
   "network": "studionet",
   "chain_id": 61999,
   "contract": "VerityBond",
+  "source": "contracts/VerityBond.py",
+  "source_sha256": "8666fb1294c9bc106863b15788f94e81f0d12881852a704102d1c16fc4b7524d",
+  "source_commit": "425950978521db00486a1c4995c94375e82377ef",
   "contract_address": "0xe6859D98D3cD2532A76684454fF2edA809cd4834",
   "deployment_transaction": "0xf8431603750fc671114065506c0399f6b2727fac6decb6bc04e8b40988b9e4d0",
   "deployer": "0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb",
-  "deployed_at": "2026-10-28T08:44:06Z"
+  "deployed_at": "2026-10-28T08:44:06Z",
+  "transaction_status": "ACCEPTED",
+  "consensus_result": "MAJORITY_AGREE",
+  "verified": true,
+  "verification": {
+    "checked_at": "2026-10-28T08:48:04Z",
+    "schema_read": true,
+    "ledger": {
+      "currently_locked": "0",
+      "pacts": "0",
+      "total_in": "0",
+      "total_out": "0"
+    }
+  }
 }
