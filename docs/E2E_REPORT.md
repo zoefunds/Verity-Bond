@@ -2,7 +2,7 @@
 
 ## Result
 
-**PASS — 4/4 live checks passed at 2026-10-28 08:53:48 UTC.**
+**PASS — 4/4 live checks passed at 2026-10-28 08:56:48 UTC.**
 
 This report records read-only tests executed against the real GenLayer
 Studionet RPC at `https://studio.genlayer.com/api`. It is separate from the 22
@@ -78,7 +78,7 @@ The real `get_ledger` response was:
 ```
 
 The conservation invariant holds: `currently_locked = total_in - total_out`.
-`list_pacts` also remains empty at the time of this test.
+`list_pacts` also remained empty at the 2026-10-28 08:56:48 UTC check.
 
 ## Reproduce
 

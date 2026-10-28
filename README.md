@@ -14,12 +14,12 @@ state transitions release or pay the escrow.
 | Contract | `0xe6859D98D3cD2532A76684454fF2edA809cd4834` |
 | Transaction | `0xf8431603750fc671114065506c0399f6b2727fac6decb6bc04e8b40988b9e4d0` |
 | Deployer | `0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb` |
-| Status | Accepted (`MAJORITY_AGREE`) |
+| Status | Finalized (`MAJORITY_AGREE`) |
 | Deployed | 2026-10-28 08:44:06 UTC |
 
 Post-deployment verification retrieved the public schema and called
 `get_ledger`. The live ledger returned zero pacts and zero value in, out, or
-locked as of 2026-10-28 08:53:48 UTC. Machine-readable deployment data is in
+locked as of 2026-10-28 08:56:48 UTC. Machine-readable deployment data is in
 [`deployments/studionet.json`](deployments/studionet.json).
 
 ## Repository

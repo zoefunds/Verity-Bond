@@ -13,12 +13,18 @@
 | RPC | `https://studio.genlayer.com/api` |
 | Address | `0xe6859D98D3cD2532A76684454fF2edA809cd4834` |
 | Transaction | `0xf8431603750fc671114065506c0399f6b2727fac6decb6bc04e8b40988b9e4d0` |
-| Result | `ACCEPTED`, `MAJORITY_AGREE` |
+| Current status | `FINALIZED` |
+| Consensus result | `MAJORITY_AGREE` |
 | Consensus rounds | 1 |
 | Deployed at | 2026-10-28 08:44:06 UTC |
+| Last live verification | 2026-10-28 08:56:48 UTC |
 
 The address and transaction are also recorded in
 `deployments/studionet.json`.
+
+`ACCEPTED` was the deployment receipt status returned immediately after
+consensus. The transaction has since advanced to its terminal `FINALIZED`
+status; documentation and deployment metadata now report the current state.
 
 ## Reproduce a deployment
 
