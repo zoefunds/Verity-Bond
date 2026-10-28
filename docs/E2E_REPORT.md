@@ -2,11 +2,30 @@
 
 ## Result
 
-**PASS — 4/4 live checks passed at 2026-10-28 08:56:48 UTC.**
+**PASS — real identity, HTTPS verification, baseline admission, and payable
+pact creation executed on Studionet. The resulting 5/5 live state checks passed
+at 2026-10-28 09:05:01 UTC.**
 
-This report records read-only tests executed against the real GenLayer
-Studionet RPC at `https://studio.genlayer.com/api`. It is separate from the 22
-direct-VM tests, which use deterministic local web and model mocks.
+This report records both real write transactions and subsequent state checks
+against the GenLayer Studionet RPC at `https://studio.genlayer.com/api`. It is
+separate from the 22 direct-VM tests, which use deterministic local web and
+model mocks.
+
+## Real write lifecycle executed
+
+| Step | Transaction | Result |
+| --- | --- | --- |
+| `begin_identity` | `0xcc06f8428ab896793c3788b456503f2c51cc80afbbee6369f377d0646f239331` | `MAJORITY_AGREE` |
+| `verify_identity` | `0xbd34aad73463f6a45a5e98965d2077a78fa7655c73150bf1cbe9d6a3f9cc6392` | `MAJORITY_AGREE`; validators returned `ok=true` |
+| `open_pact` with value `1` | `0x41b926060d537957ef742fdfad6c36464847f11b1804efae47fc02d85e07276e` | `MAJORITY_AGREE`; returned `pact opened with identity-bound publisher` |
+
+The identity proof was served from
+`https://veritybond-live-e2e.vercel.app/.well-known/veritybond.json`. The
+baseline was fetched from
+`https://veritybond-live-e2e.vercel.app/commitment`. This exercised real HTTPS
+fetching, validator nondeterministic consensus, identity storage, semantic
+baseline classification, value transfer into the contract, pact storage, and
+read-back from the deployed contract.
 
 ## Target
 
@@ -64,21 +83,52 @@ five view methods read-only.
 
 These values match the reviewed repository source.
 
-### 4. Ledger and state — PASS
+### 4. Ledger conservation — PASS
 
 The real `get_ledger` response was:
 
 ```json
 {
-  "currently_locked": "0",
-  "pacts": "0",
-  "total_in": "0",
+  "currently_locked": "1",
+  "pacts": "1",
+  "total_in": "1",
   "total_out": "0"
 }
 ```
 
 The conservation invariant holds: `currently_locked = total_in - total_out`.
-`list_pacts` also remained empty at the 2026-10-28 08:56:48 UTC check.
+
+### 5. Persisted real pact — PASS
+
+| Field | Observed value |
+| --- | --- |
+| Pact ID | `VB-LIVE-E2E-20261028-01` |
+| State | `LIVE` |
+| Stake | `1` |
+| Publisher | `0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb` |
+| Beneficiary | `0xe2743b213418428A5BfBc7D9dDb8ec7c4c0D36De` |
+| Created | `2026-10-28T09:03:42.358812Z` |
+| Expires | `2026-11-11T09:03:42Z` |
+| Baseline digest | `a4f65d22be3a7afe699a6e992b06fe5c106ebea4ba7250239aae32b9da168f2e` |
+| Statement digest | `725d3c3bc90aa06f0b96ea77e24a8dd81827ce72752b9bdae78ddb6d0da15565` |
+
+`get_pact` and `list_pacts` both returned this pact from real contract storage.
+
+## Explorer evidence
+
+- [`begin_identity` transaction](https://explorer-studio.genlayer.com/tx/0xcc06f8428ab896793c3788b456503f2c51cc80afbbee6369f377d0646f239331)
+- [`verify_identity` transaction](https://explorer-studio.genlayer.com/tx/0xbd34aad73463f6a45a5e98965d2077a78fa7655c73150bf1cbe9d6a3f9cc6392)
+- [`open_pact` transaction](https://explorer-studio.genlayer.com/tx/0x41b926060d537957ef742fdfad6c36464847f11b1804efae47fc02d85e07276e)
+- [Live contract](https://explorer-studio.genlayer.com/address/0xe6859D98D3cD2532A76684454fF2edA809cd4834)
+
+## Archive progress
+
+A real Wayback Save Page Now capture was requested at 2026-10-28 09:06:55
+UTC under job `spn2-f1991b44e65c497763fb3babebf9a1805a19eb76`. It was not yet
+visible in the CDX index at the immediate follow-up check. Arquivo.pt's capture
+is also not yet available. The contract correctly refuses an evidence round
+until both independent adapters expose post-creation captures with matching
+metadata and digests.
 
 ## Reproduce
 
@@ -89,8 +139,9 @@ availability:
 RUN_STUDIONET_E2E=1 python3 -m pytest tests/e2e/test_studionet.py -v
 ```
 
-The test requires the GenLayer CLI and network access. It performs only
-read-only calls and does not require a private key.
+The repeatable test requires the GenLayer CLI and network access. It reads and
+asserts the state created by the recorded write transactions and does not need
+a private key for reruns.
 
 The deterministic suite remains:
 
@@ -100,9 +151,14 @@ gltest tests/direct -q
 
 ## Scope
 
-This live E2E proves deployment finality, deployed-source identity, ABI/schema
-availability, protocol-limit consistency, and live ledger conservation. The
-full identity, archive, semantic-classification, challenge, and payout paths are
-covered by the 22 direct-VM lifecycle tests. A destructive live lifecycle was
-not created because it would require publishing a controlled domain proof and
-permanent archive captures for a new funded pact.
+This live E2E now proves deployment finality, deployed-source identity,
+ABI/schema availability, protocol-limit consistency, real identity challenge,
+real public proof verification, real baseline classification, payable pact
+creation, persisted pact state, and live ledger conservation.
+
+It does **not yet claim terminal settlement**. The contract enforces a minimum
+14-day term, and an early beneficiary release requires a post-creation evidence
+round from both Wayback Machine and Arquivo.pt. Those independent archives can
+take hours to expose new captures. Until that evidence exists or the pact term
+ends, the truthful live state is `LIVE` with one unit locked. Terminal paths
+remain covered by the 22 deterministic direct-VM lifecycle tests.

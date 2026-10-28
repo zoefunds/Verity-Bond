@@ -18,8 +18,9 @@ state transitions release or pay the escrow.
 | Deployed | 2026-10-28 08:44:06 UTC |
 
 Post-deployment verification retrieved the public schema and called
-`get_ledger`. The live ledger returned zero pacts and zero value in, out, or
-locked as of 2026-10-28 08:56:48 UTC. Machine-readable deployment data is in
+`get_ledger`. A real identity-bound E2E pact now leaves the live ledger at one
+pact, one unit in, zero out, and one locked as of 2026-10-28 09:05:01 UTC.
+Machine-readable deployment data is in
 [`deployments/studionet.json`](deployments/studionet.json).
 
 ## Repository
@@ -48,11 +49,16 @@ challenge generation, baseline admission, evidence quorum, replay resistance,
 archive digest validation, review and challenge paths, beneficiary release,
 expiry behavior, and value conservation.
 
-Run the four live, read-only Studionet checks with:
+Run the five live Studionet state-verification checks with:
 
 ```sh
 RUN_STUDIONET_E2E=1 python3 -m pytest tests/e2e/test_studionet.py -v
 ```
+
+The persisted state comes from real `begin_identity`, `verify_identity`, and
+payable `open_pact` transactions. See [`docs/E2E_REPORT.md`](docs/E2E_REPORT.md)
+for transaction hashes, observed state, and the remaining terminal-settlement
+boundary.
 
 ## Identity proof
 

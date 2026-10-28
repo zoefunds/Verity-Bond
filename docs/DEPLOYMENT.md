@@ -17,7 +17,7 @@
 | Consensus result | `MAJORITY_AGREE` |
 | Consensus rounds | 1 |
 | Deployed at | 2026-10-28 08:44:06 UTC |
-| Last live verification | 2026-10-28 08:56:48 UTC |
+| Last live verification | 2026-10-28 09:05:01 UTC |
 
 The address and transaction are also recorded in
 `deployments/studionet.json`.
@@ -25,6 +25,11 @@ The address and transaction are also recorded in
 `ACCEPTED` was the deployment receipt status returned immediately after
 consensus. The transaction has since advanced to its terminal `FINALIZED`
 status; documentation and deployment metadata now report the current state.
+
+The live contract now contains one minimum-stake E2E pact. Its write
+transactions and state are recorded in `deployments/studionet-live-e2e.json`.
+Consequently, the current ledger is no longer the empty initial ledger shown in
+the reproduction example below.
 
 ## Reproduce a deployment
 
@@ -46,7 +51,7 @@ genlayer call <contract-address> get_ledger \
   --rpc https://studio.genlayer.com/api
 ```
 
-Expected initial ledger:
+Expected ledger immediately after a fresh deployment:
 
 ```json
 {

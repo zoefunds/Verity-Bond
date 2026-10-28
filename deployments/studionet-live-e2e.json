@@ -1,0 +1,42 @@
+{
+  "network": "studionet",
+  "chain_id": 61999,
+  "contract_address": "0xe6859D98D3cD2532A76684454fF2edA809cd4834",
+  "fixture": {
+    "domain": "veritybond-live-e2e.vercel.app",
+    "identity_url": "https://veritybond-live-e2e.vercel.app/.well-known/veritybond.json",
+    "commitment_url": "https://veritybond-live-e2e.vercel.app/commitment"
+  },
+  "publisher": "0x7401c129EDfc26E68FE19309fE461eb3Db1058Eb",
+  "beneficiary": "0xe2743b213418428A5BfBc7D9dDb8ec7c4c0D36De",
+  "transactions": {
+    "begin_identity": "0xcc06f8428ab896793c3788b456503f2c51cc80afbbee6369f377d0646f239331",
+    "verify_identity": "0xbd34aad73463f6a45a5e98965d2077a78fa7655c73150bf1cbe9d6a3f9cc6392",
+    "open_pact": "0x41b926060d537957ef742fdfad6c36464847f11b1804efae47fc02d85e07276e"
+  },
+  "pact": {
+    "id": "VB-LIVE-E2E-20261028-01",
+    "state": "LIVE",
+    "stake": "1",
+    "created_at": "2026-10-28T09:03:42.358812Z",
+    "expires_at": "2026-11-11T09:03:42Z",
+    "baseline_digest": "a4f65d22be3a7afe699a6e992b06fe5c106ebea4ba7250239aae32b9da168f2e",
+    "statement_digest": "725d3c3bc90aa06f0b96ea77e24a8dd81827ce72752b9bdae78ddb6d0da15565"
+  },
+  "ledger_after_open": {
+    "currently_locked": "1",
+    "pacts": "1",
+    "total_in": "1",
+    "total_out": "0"
+  },
+  "verified_at": "2026-10-28T09:05:01Z",
+  "archive_progress": {
+    "wayback_save_job": "spn2-f1991b44e65c497763fb3babebf9a1805a19eb76",
+    "wayback_requested_at": "2026-10-28T09:06:55Z",
+    "wayback_indexed_at_last_check": false,
+    "arquivo_capture_available": false
+  },
+  "scope": "identity challenge, public HTTPS proof verification, baseline fetch and semantic admission, payable pact creation, and persisted state read-back",
+  "terminal_settlement_tested": false,
+  "terminal_settlement_note": "The minimum contract term is 14 days and evidence requires post-creation captures from both approved archives. The live pact cannot be truthfully reported as terminal before those external prerequisites exist."
+}

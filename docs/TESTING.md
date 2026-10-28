@@ -8,7 +8,8 @@ gltest tests/direct -q
 
 Current deterministic result: **22/22 passed** at 2026-10-28 08:56:48 UTC.
 
-The live Studionet suite is opt-in and passed **4/4 checks** at the same time:
+The live Studionet suite is opt-in and now passes **5/5 checks** against state
+created by three real write transactions:
 
 ```sh
 RUN_STUDIONET_E2E=1 python3 -m pytest tests/e2e/test_studionet.py -v
@@ -49,5 +50,6 @@ genlayer call 0xe6859D98D3cD2532A76684454fF2edA809cd4834 get_ledger \
 ```
 
 The schema exposed all documented methods. The latest ledger check at
-2026-10-28 08:56:48 UTC was empty and conserved.
+2026-10-28 09:05:01 UTC contained the real E2E pact and was conserved:
+`total_in=1`, `total_out=0`, and `currently_locked=1`.
 

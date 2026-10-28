@@ -13,15 +13,16 @@
   "consensus_result": "MAJORITY_AGREE",
   "verified": true,
   "verification": {
-    "checked_at": "2026-10-28T08:56:48Z",
+    "checked_at": "2026-10-28T09:05:01Z",
     "schema_read": true,
     "deployed_source_matches": true,
-    "live_e2e_checks": 4,
-    "live_e2e_passed": 4,
+    "live_e2e_checks": 5,
+    "live_e2e_passed": 5,
+    "live_write_transactions": 3,
     "ledger": {
-      "currently_locked": "0",
-      "pacts": "0",
-      "total_in": "0",
+      "currently_locked": "1",
+      "pacts": "1",
+      "total_in": "1",
       "total_out": "0"
     }
   }
